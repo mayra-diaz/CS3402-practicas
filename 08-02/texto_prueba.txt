@@ -1,0 +1,7 @@
+Mayri Juacs
+'Compi' 123
+"Holas"
+6;
+hola.txt pdf.pdf
+{c++;}
+
