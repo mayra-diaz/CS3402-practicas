@@ -9,7 +9,7 @@ int lines = 0, words=0, chars=0;
 %% 
 \n      {++lines; ++chars;}
 .       {++chars;}
-([a-zA-Z0-9])*    {++words; chars+= strlen(yytext);}
+([a-zA-Z0-9])*    {++words; chars+=yyleng;}
 %%
   
 int main() 

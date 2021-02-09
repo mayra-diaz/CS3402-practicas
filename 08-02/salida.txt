@@ -1,0 +1,9 @@
+1	Mayri Juacs
+2	'Compi' 123
+3	"Holas" aleluya
+4	arbol papayas
+5	6;
+6	102
+7	hola.txt pdf.pdf
+8	{c++;}
+9	

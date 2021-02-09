@@ -2,33 +2,27 @@
 
 %{
 #include<stdio.h>
-#include<string.h>
 %}
 
-N ([0-9])*
-W ([a-zA-Z0-9])*
-A  {W}\.{pdf|txt}
-C  {\" | \'}
-LI \{
-LD \}
-SC \;
-SL \n
+N ([0-9])+
+W ([a-zA-Z])+
+A ([a-zA-Z]|[0-9])+[.](pdf|txt|py|cpp|h|r|l|hpp)
+
 
 %%
-{N} {printf("NUMERO\t");}
-{W} {printf("PALABRA\t");}
-{A} {printf("ARCHIVO\t");}
-{C} {printf("COMILLAS\t");}
-{LI} {printf("LLAVE IZQUIERDA\t");}
-{LD} {printf("LLAVE DERECHA\t");} 
-{SC} {printf("SEMICOLON\t");} 
-{SL} {printf("SALTO DE LINEA\t");} 
+{A} {printf("ARCHIVO\n");}
+{N} {printf("NUMERO\n");}
+{W} {printf("PALABRA\n");}
+["'] {printf("COMILLAS\n");}
+[{] {printf("LLAVE IZQUIERDA\n");}
+[}] {printf("LLAVE DERECHA\n");} 
+[;] {printf("SEMICOLON\n");} 
+[\n] {printf("SALTO DE LINEA\n");} 
 %%
 
 int main(int argc, char *argv[]) {
-	yyin = fopen(argv[1], "r");
 	yylex();
-	fclose(yyin);
+	return 0;
 }
 
 
