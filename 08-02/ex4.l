@@ -4,8 +4,9 @@
 int count=0; 
 %}
 
-digit [0 − 9]
+digit [0-9]
 number (digit)+
+
 %%
 {number} {int n = atoi(yytext);
 	printf("%x",n);
