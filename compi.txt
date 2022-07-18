@@ -1,0 +1,145 @@
+------------------------------------------------------------------------------------
+        UNIDAD 1 -- REPRESENTACIÓN Y EJECUCIÓN DE PROGRAMAS
+------------------------------------------------------------------------------------
+
+- Compiladores: código de alto nivel a código de máquina
+- Preprocesadores: usan macroinstrucciones y directivas de compilación, modifican el programa antes de la compilación
+- Ensambladores: lenguaje ensamblador a lenguaje de máquina
+- Compliación y enlace: el código se estructura en módulos dentro de un fichero objetos, el LINKER los fusiona en un ejecutable final
+- LLVM: infraestructura para desarrollar compiladores
+
+TRADUCTOR:
+- Análisis (front end)
+	a lexicográfico ->sintáctico -> semántico
+- Síntesis (back end)
+	g.c intermedio -> g.c máquina -> optimización
+
+PREPROCESAMIENTO
+Líneas del código precesidas de #, genera el input del compilador
+Funciones:
+- Definición de macros
+- Inclusión de archivos (headers)
+- Extensiones del lenguaje
+
+ENSAMBLADORES
+- 1 paso:
+	Asumen que todos los símbolos serán definidos antes de cualquier instrucción 	     que los refiera 
+	Ventaja: velocidad
+- 2 pasos:
+	Crean la tabla de símbolos y después (usándola) generan el código
+	Ventaja: símbolos pueden ser definidos dondesea, más fácil de leer y mantener
+
+Cross compiler: crea ejecutables para una plataforma distinta a aquella
+Just int time: combina compiladores e intérpretes, se compila a un cod intermedio, este es interpretado por una máquina virtual
+
+
+------------------------------------------------------------------------------------
+	UNIDAD 2 -- GESTIÓN DE MEMORIA
+------------------------------------------------------------------------------------
+
+RAM: área de código | área de datos
+
+AMBIENTE DE EJECUCIÓN:
+
+					code main procedure
+		     a. código		  code procedure 1
+					        ...
+					  code procedure n
+		--------------------
+
+		 a. global/estática
+
+		--------------------
+
+		      a. data		   registros de
+		       (pila)		    activación
+
+		--------------------
+
+		   espacio libre
+
+		--------------------
+
+			heap
+
+
+REGISTRO DE ACTIVACIÓN:
+
+		argumentos (parámetros)
+		-----------------------
+		 inf de administración
+		(dircc retorno, control)
+		-----------------------
+		   datos locales
+		-----------------------
+		 temporales locales
+
+Nueva llamada -> inserción
+Desasignado -> extracción
+
+Frame pointer (fp): apuntador a la activación actual
+Vínculo de control(dinámico): apuntador al registro de activación previo
+
+
+ADMINISTRACIÓN DE MEMORIA
+- Eficiencia de espacio
+	minimizar el heap total
+- Eficiencia de código
+	buen uso de la memoria para que el programa se ejecute a alta velocidad
+- Bajo tiempo de acceso:
+	minimizar el tiempo en asignación y retiro de memoria
+
+C++ -> tabla de función virtual, se almacenan estáticamente
+
+
+------------------------------------------------------------------------------------
+        UNIDAD 3 -- ANÁLISIS DE SINTAXIS
+------------------------------------------------------------------------------------
+Patrón: exp regular
+Token(terminal): clasificación léxica
+Lexema: instancia del token (secuencia de caracteres)
+
+LEX
+Reconocer patrones léxicos (TOKENS)
+
+Análisis lexicográfico:
+Transforma los tokens en:
+	<TOKEN NAME, ATTRIBUTE VALUE, ...>
+
+Análisis sintáctico:
+Analiza la secuencia de tokens y provee el árbol sintáctico
+Detecta errores (también distingue advertencias):
+	- Léxicos (escritura)
+	- Sintácticos (exp aritmeticas, () no balanceados)
+	- Semánticos (operadores incompatibles)
+	- Lógicos (llamada inf recursiva)
+	- Corrección (no hace lo esperado)
+
+
+AMBIGUEDAD: Se debe asegurar la correcta precedencia y asociatividad
+Métodos para quitar la ambiguedad:
+	- DISAMBIGUATING RULE: hacer una regla que indique el árbol correcto.
+	- CAMBIO EN LA GRAMÁTICA: modificar la gramática de tal forma que no haya ambiguedad
+
+ENBF --> EXTENDED BNF:
+	- Usa {} para representar la repetición de cierto patrón
+	Exp: A -> bA | a   -->  A -> b {a}
+
+
+
+
+
+
+
+------------------------------------------------------------------------------------
+        UNIDAD 4 -- ANÁLISIS SEMÁNTICO
+------------------------------------------------------------------------------------
+
+
+
+
+------------------------------------------------------------------------------------
+        UNIDAD 5 -- GENERACIÓN DE CÓDIGO
+------------------------------------------------------------------------------------
+
+
